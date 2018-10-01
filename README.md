@@ -1,7 +1,7 @@
 # wResize
 The math behind window anchoring.
 -----------------
-Example
+Example (yes unoptomized)
 -----------------
 ```
 #include "mResize.h"
