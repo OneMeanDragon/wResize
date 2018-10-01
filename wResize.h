@@ -263,7 +263,7 @@ public:
 		AddWindow(WindowData);
 	}
 
-	bool ResizeWindows2()
+	bool ResizeWindows()
 	{
 		std::vector<WindowInformation>::iterator it;
 		for (it = Windows.begin(); it != Windows.end(); it++)
