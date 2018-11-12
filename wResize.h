@@ -21,7 +21,7 @@
    James Gavin dragonkings@gmail.com
 */
 
-struct AnchorInformation //consider flaging
+struct AnchorInformation 
 {
 	bool Top;
 	bool Right;
@@ -71,11 +71,11 @@ struct WindowInformation
 		GetWindowPlacement(ChildWindow, &pChildPlace); 
 
 		/* Get child x and y positions */
-		x = pChildPlace.rcNormalPosition.left; //x = ChildRect.left; //.RC saying its at 7, 7.................................
-		y = pChildPlace.rcNormalPosition.top; //y = ChildRect.top;
+		x = pChildPlace.rcNormalPosition.left; 
+		y = pChildPlace.rcNormalPosition.top; 
 		/* Get height and width */
-		height = pChildPlace.rcNormalPosition.bottom - pChildPlace.rcNormalPosition.top; //height = ChildRect.bottom - ChildRect.top;
-		width = pChildPlace.rcNormalPosition.right - pChildPlace.rcNormalPosition.left; //width = ChildRect.right - ChildRect.left;
+		height = pChildPlace.rcNormalPosition.bottom - pChildPlace.rcNormalPosition.top; 
+		width = pChildPlace.rcNormalPosition.right - pChildPlace.rcNormalPosition.left; 
 
 		//Anchors
 		Anchors.Top = b_top;
@@ -147,7 +147,7 @@ struct WindowInformation
 		{
 			//	: SetWindowPos(hWnd, NULL, X, Y, nWidth, nHeight, SWP_NOZORDER | (bool)bRepaint * SWP_NOREDRAW))
 			//Only x is updated.
-			x = ParentWidth - pChildRect.fromtheright;// ParentRect.right * pChildRect.x;
+			x = ParentWidth - pChildRect.fromtheright;
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
 		}
@@ -155,7 +155,7 @@ struct WindowInformation
 		if (Anchors.Top == false && Anchors.Bottom == true && Anchors.Left == false && Anchors.Right == false)
 		{
 			//Only y is updated.
-			y = ParentHeight - pChildRect.fromthebottom;// ParentRect.right * pChildRect.x;
+			y = ParentHeight - pChildRect.fromthebottom;
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
 		}
@@ -173,8 +173,8 @@ struct WindowInformation
 		if (Anchors.Top == false && Anchors.Bottom == true && Anchors.Left == false && Anchors.Right == true)
 		{
 			//Only y is updated.
-			x = ParentWidth - pChildRect.fromtheright;// ParentRect.right * pChildRect.x;
-			y = ParentHeight - pChildRect.fromthebottom;// ParentRect.right * pChildRect.x;
+			x = ParentWidth - pChildRect.fromtheright;
+			y = ParentHeight - pChildRect.fromthebottom;
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
 		}
@@ -182,7 +182,7 @@ struct WindowInformation
 		if (Anchors.Top == false && Anchors.Bottom == true && Anchors.Left == true && Anchors.Right == false)
 		{
 			//Only y is updated.
-			y = ParentHeight - pChildRect.fromthebottom;// ParentRect.right * pChildRect.x;
+			y = ParentHeight - pChildRect.fromthebottom;
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
 		}
@@ -190,7 +190,7 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == false && Anchors.Left == false && Anchors.Right == true)
 		{
 			//Only x is updated.
-			x = ParentWidth - pChildRect.fromtheright;// ParentRect.right * pChildRect.x;
+			x = ParentWidth - pChildRect.fromtheright;
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
 		}
@@ -198,7 +198,7 @@ struct WindowInformation
 		if (Anchors.Top == false && Anchors.Bottom == false && Anchors.Left == true && Anchors.Right == true)
 		{
 			//only width is updated.
-			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));// (float)ParentRect.right - pChildRect.reverse_x;
+			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));
 			if (width < 0) { width = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -207,7 +207,7 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == false && Anchors.Left == true && Anchors.Right == true)
 		{
 			//only width is updated.
-			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));// (float)ParentRect.right - pChildRect.reverse_x;
+			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));
 			if (width < 0) { width = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -216,8 +216,8 @@ struct WindowInformation
 		if (Anchors.Top == false && Anchors.Bottom == true && Anchors.Left == true && Anchors.Right == true)
 		{
 			//y and width is updated.
-			y = (float)ParentHeight - pChildRect.fromthebottom;// ParentRect.right * pChildRect.x;
-			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));// (float)ParentRect.right - pChildRect.reverse_x;
+			y = (float)ParentHeight - pChildRect.fromthebottom;
+			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));
 			if (width < 0) { width = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -226,7 +226,7 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == true && Anchors.Left == false && Anchors.Right == false)
 		{
 			//only height is updated.
-			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));// (float)ParentRect.right - pChildRect.reverse_x;
+			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));
 			if (height < 0) { height = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -235,8 +235,8 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == true && Anchors.Left == false && Anchors.Right == true)
 		{
 			//x, height is updated.
-			x = ParentWidth - pChildRect.fromtheright;// ParentRect.right * pChildRect.x;
-			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));// (float)ParentRect.right - pChildRect.reverse_x;
+			x = ParentWidth - pChildRect.fromtheright;
+			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));
 			if (height < 0) { height = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -245,7 +245,7 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == true && Anchors.Left == true && Anchors.Right == false)
 		{
 			//only height is updated.
-			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));// (float)ParentRect.right - pChildRect.reverse_x;
+			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));
 			if (height < 0) { height = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
@@ -254,9 +254,9 @@ struct WindowInformation
 		if (Anchors.Top == true && Anchors.Bottom == true && Anchors.Left == true && Anchors.Right == true)
 		{
 			//only height is updated.
-			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));// (float)ParentRect.right - pChildRect.reverse_x;
+			height = ((float)ParentHeight - y) - (((float)ParentHeight) - ((float)ParentHeight - pChildRect.reverse_y));
 			if (height < 0) { height = 0; }
-			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));// (float)ParentRect.right - pChildRect.reverse_x;
+			width = ((float)ParentWidth - x) - (((float)ParentWidth) - ((float)ParentWidth - pChildRect.reverse_x));
 			if (width < 0) { width = 0; }
 			SetWindowPos(ChildWindow, NULL, x, y, width, height, SWP_NOZORDER);
 			return;
