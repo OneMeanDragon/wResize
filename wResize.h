@@ -270,6 +270,32 @@ private:
 	std::vector<WindowInformation> Windows;
 public:
 
+	//Only needed if you create menu via API
+	void AddMenuHeight(const HWND hParentWindow)
+	{
+		//GetMenuBarInfo()
+		int cy_border = GetSystemMetrics(SM_CYFRAME);
+
+		int cy_caption = GetSystemMetrics(SM_CYCAPTION);
+
+		RECT window_rect;
+
+		GetWindowRect(hParentWindow, &window_rect);
+
+		POINT client_top_left = { 0, 0 };
+
+		ClientToScreen(hParentWindow, &client_top_left);
+
+		int menu_height = client_top_left.y - window_rect.top - cy_caption - (cy_border * 2);
+
+		int height, width = 0;
+		height = window_rect.bottom - window_rect.top;
+		height += menu_height;
+		width = window_rect.right - window_rect.left;
+		//add the height to the window now.
+		SetWindowPos(hParentWindow, NULL, client_top_left.x, client_top_left.y, width, height, SWP_NOZORDER);
+	}
+	
 	void AddWindow(WindowInformation WindowData)
 	{
 		Windows.push_back(WindowData);
